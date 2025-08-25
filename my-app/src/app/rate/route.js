@@ -4,13 +4,13 @@ import { cookies } from "next/headers";
 // Per-IP limiter (stricter, to prevent mass abuse)
 const ipLimiter = new RateLimiterMemory({
   points: 6,   // 6 requests
-  duration: 1000, // per day per IP
+  duration: 24 * 60 * 60, // per day per IP
 });
 
 // Per-anonId limiter (fairness per device/browser)
 const guestLimiter = new RateLimiterMemory({
   points: 2,   // 6 requests
-  duration: 1000, // per day per guestId
+  duration: 60, // per day per guestId
 });
 
 export async function GET(req) {
