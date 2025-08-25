@@ -10,7 +10,7 @@ const ipLimiter = new RateLimiterMemory({
 // Per-anonId limiter (fairness per device/browser)
 const guestLimiter = new RateLimiterMemory({
   points: 2,   // 6 requests
-  duration: 60, // per day per guestId
+  duration: 24 * 60 * 60, // per day per guestId
 });
 
 export async function GET(req) {
